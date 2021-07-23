@@ -19,15 +19,15 @@ $router->group(['prefix'=>'/v1'],function () use ($router){
     /* Books */
     $router->group(['prefix'=>'/books'],function () use ($router){
         /* POST */
-        $router->post('/register', 'Book\BookController@storeBook');
+        $router->post('/register', 'Book\BookController@store');
         /* GET */
-        $router->get('/list', 'Book\BookController@booksList');
-        $router->get('/books/{book}', 'Book\BookController@getBook');
+        $router->get('/list', 'Book\BookController@index');
+        $router->get('/books/{book}', 'Book\BookController@show');
         /* PUT */
-        $router->put('/books/{book}/','Book\BookController@updateBook');
-        $router->patch('/books/{book}/','Book\BookController@updateBook');
+        $router->put('/books/{book}/','Book\BookController@update');
+        $router->patch('/books/{book}/','Book\BookController@update');
         /* DELETE */
-        $router->delete('/books/{book}/','Book\BookController@deleteBook');
+        $router->delete('/books/{book}/','Book\BookController@delete');
     });
     /* Authors */
     $router->group(['prefix'=>'/users'],function () use ($router){

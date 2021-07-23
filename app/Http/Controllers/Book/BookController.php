@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Services\BookService;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class BookController extends Controller
 {
@@ -14,7 +15,7 @@ class BookController extends Controller
      * the service to consume book service
      * @var BookService
      */
-    public $authorService;
+    public $bookService;
 
     /**
      * Create a new controller instance.
@@ -32,7 +33,7 @@ class BookController extends Controller
      */
     public function index()
     {
-       
+       return $this->successResponse($this->bookService->obtainBooks());
     }
 
     /**
@@ -40,6 +41,9 @@ class BookController extends Controller
      * @return Illuminate\Http\Response
      */
     public function store(Request $request){
+        return $this->successResponse(
+            $this->bookService->crerateBook($request->all(), Response::HTTP_CREATED)
+        );
       
     }
 
@@ -49,7 +53,7 @@ class BookController extends Controller
      * @return Illuminate\Http\Response
      */
     public function show($book){
-       
+        return $this->successResponse($this->bookService->obtainBook($book));       
     }
 
     /**
@@ -57,7 +61,7 @@ class BookController extends Controller
      * @return Illuminate\Http\Response
      */
     public function update(Request $request, $book){
-       
+        $this->bookService->updateBook($request->all(), $book);
     }
 
     /**
@@ -65,6 +69,6 @@ class BookController extends Controller
      * @return Illuminate\Http\Response
      */
     public function delete($book){
-       
+        return $this->successResponse($this->bookService->destroyBook($book));              
     }
 }

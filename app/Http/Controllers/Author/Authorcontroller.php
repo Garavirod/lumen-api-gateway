@@ -19,7 +19,7 @@ class AuthorController extends Controller
     public $authorService;
 
     /**
-     * Create a new controller instance.
+     * Create a new author controller instance.
      *
      * @return void
      */
