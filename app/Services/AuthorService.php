@@ -37,4 +37,13 @@ class AuthorService
     {
         return $this->perfomRequest('POST','users/register', $data);
     }
+
+    /**
+     * Get full list author from Author service
+     * @return string
+     */
+    public function obtainAuthor($author)
+    {
+        return $this->perfomRequest('GET',"users/authors/{$author}");
+    }
 }

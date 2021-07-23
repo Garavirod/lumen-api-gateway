@@ -35,7 +35,7 @@ $router->group(['prefix'=>'/v1'],function () use ($router){
         $router->post('/register', 'Author\AuthorController@store');
         /* GET */
         $router->get('/list', 'Author\AuthorController@index');
-        $router->get('/authors/{author}', 'Author\AuthorController@getAuthor');
+        $router->get('/authors/{author}', 'Author\AuthorController@show');
         /* PUT */
         $router->put('/authors/{author}/','Author\AuthorController@updateAuthor');
         $router->patch('/authors/{author}/','Author\AuthorController@updateAuthor');
