@@ -37,10 +37,10 @@ $router->group(['prefix'=>'/v1'],function () use ($router){
         $router->get('/list', 'Author\AuthorController@index');
         $router->get('/authors/{author}', 'Author\AuthorController@show');
         /* PUT */
-        $router->put('/authors/{author}/','Author\AuthorController@updateAuthor');
-        $router->patch('/authors/{author}/','Author\AuthorController@updateAuthor');
+        $router->put('/authors/{author}/','Author\AuthorController@update');
+        $router->patch('/authors/{author}/','Author\AuthorController@update');
         /* DELETE */
-        $router->delete('/authors/{author}/','Author\AuthorController@deleteAutor');
+        $router->delete('/authors/{author}/','Author\AuthorController@delete');
     });
 });
 

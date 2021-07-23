@@ -62,7 +62,7 @@ class AuthorController extends Controller
      * @return Illuminate\Http\Response
      */
     public function update(Request $request, $author){
-       
+        $this->authorService->updateAuthor($request->all(), $author);
     }
 
     /**
@@ -70,6 +70,6 @@ class AuthorController extends Controller
      * @return Illuminate\Http\Response
      */
     public function delete($author){
-       
+        return $this->successResponse($this->authorService->destroyAuthor($author));              
     }
 }

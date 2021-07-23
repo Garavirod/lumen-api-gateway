@@ -30,7 +30,7 @@ class AuthorService
 
 
     /**
-     * Get full list author from Author service
+     * Create an author from Author service
      * @return string
      */
     public function crerateAuthor($data)
@@ -39,11 +39,29 @@ class AuthorService
     }
 
     /**
-     * Get full list author from Author service
+     * Get an author from Author service
      * @return string
      */
     public function obtainAuthor($author)
     {
         return $this->perfomRequest('GET',"users/authors/{$author}");
+    }
+
+    /**
+     * Edit an author from Author service
+     * @return string
+     */
+    public function updateAuthor($data, $author)
+    {
+        return $this->perfomRequest('PUT',"users/authors/{$author}", $data);
+    }
+
+    /**
+     * Edit an author from Author service
+     * @return string
+     */
+    public function destroyAuthor($author)
+    {
+        return $this->perfomRequest('DELETE',"users/authors/{$author}");
     }
 }
