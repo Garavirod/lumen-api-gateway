@@ -32,7 +32,7 @@ $router->group(['prefix'=>'/v1'],function () use ($router){
     /* Authors */
     $router->group(['prefix'=>'/users'],function () use ($router){
         /* POST */
-        $router->post('/register', 'Author\AuthorController@storeAuthor');
+        $router->post('/register', 'Author\AuthorController@store');
         /* GET */
         $router->get('/list', 'Author\AuthorController@index');
         $router->get('/authors/{author}', 'Author\AuthorController@getAuthor');
