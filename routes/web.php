@@ -15,7 +15,7 @@
 
 
 // Versionamiento de servicos
-$router->group(['prefix'=>'/v1'],function () use ($router){
+$router->group(['prefix'=>'/v1', 'middleware' =>'client.credentials'],function () use ($router){
     /* Books */
     $router->group(['prefix'=>'/books'],function () use ($router){
         /* POST */
