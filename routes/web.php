@@ -18,7 +18,7 @@
 $router->group(['prefix'=>'/v1'],function () use ($router){
 
      /* Authenticate */
-     $router->group(['prefix'=>'/auth'],function () use ($router){
+     $router->group(['prefix'=>'/auth','middleware' =>'client.credentials'],function () use ($router){
         /* POST */
         $router->post('/register', 'Users\UsersController@store');
         /* GET */
