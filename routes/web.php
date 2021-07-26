@@ -15,9 +15,24 @@
 
 
 // Versionamiento de servicos
-$router->group(['prefix'=>'/v1', 'middleware' =>'client.credentials'],function () use ($router){
+$router->group(['prefix'=>'/v1'],function () use ($router){
+
+     /* Authenticate */
+     $router->group(['prefix'=>'/auth'],function () use ($router){
+        /* POST */
+        $router->post('/register', 'Users\UsersController@store');
+        /* GET */
+        $router->get('/list', 'Users\UsersController@index');
+        $router->get('/authenticate/{user}', 'Users\UsersController@show');
+        /* PUT */
+        $router->put('/authenticate/{user}/','Users\UsersController@update');
+        $router->patch('/authenticate/{user}/','Users\UsersController@update');
+        /* DELETE */
+        $router->delete('/authenticate/{user}/','Users\UsersController@delete');
+    });
+
     /* Books */
-    $router->group(['prefix'=>'/books'],function () use ($router){
+    $router->group(['prefix'=>'/books', 'middleware' =>'client.credentials'],function () use ($router){
         /* POST */
         $router->post('/register', 'Book\BookController@store');
         /* GET */
@@ -30,7 +45,7 @@ $router->group(['prefix'=>'/v1', 'middleware' =>'client.credentials'],function (
         $router->delete('/books/{book}/','Book\BookController@delete');
     });
     /* Authors */
-    $router->group(['prefix'=>'/users'],function () use ($router){
+    $router->group(['prefix'=>'/users', 'middleware' =>'client.credentials'],function () use ($router){
         /* POST */
         $router->post('/register', 'Author\AuthorController@store');
         /* GET */
@@ -42,5 +57,6 @@ $router->group(['prefix'=>'/v1', 'middleware' =>'client.credentials'],function (
         /* DELETE */
         $router->delete('/authors/{author}/','Author\AuthorController@delete');
     });
+
 });
 
