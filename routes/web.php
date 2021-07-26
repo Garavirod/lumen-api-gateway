@@ -58,5 +58,11 @@ $router->group(['prefix'=>'/v1'],function () use ($router){
         $router->delete('/authors/{author}/','Author\AuthorController@delete');
     });
 
+    /* Routes protectec using a toek assocoated and user */
+    $router->group(['prefix'=>'/users', 'middleware' =>'auth:api'],function () use ($router){
+        /* POST */
+        $router->get('/me', 'Users\UsersController@me');        
+    });
+
 });
 

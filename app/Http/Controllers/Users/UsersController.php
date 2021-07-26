@@ -99,4 +99,13 @@ class UsersController extends Controller
        $user->delete();
        return $this->successResponse($user);
     }
+
+    /**
+     * Identifies current user
+     * @return Illuminate\Http\Response
+     */
+    public function me(Request $request){
+      
+       return $this->successResponse($request->user());
+    }
 }
